@@ -34,6 +34,9 @@ class Route {
             middlewares.push(routeCheck.callback);
         }
         this.execute(middlewares, req, res, () => {
+            /*
+             * After every middleware & route has been checked with.
+             */
             res.notFound('Route not found in registry');
         });
     }
