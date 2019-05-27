@@ -1,3 +1,8 @@
 import Devote from './lib/devote';
 
-export default Devote;
+import Body from './tools/body';
+
+export { default as Devote } from './lib/devote';
+export const Tools = {
+    Body,
+};

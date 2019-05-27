@@ -52,6 +52,10 @@ export default class Devote {
   /*
    * Routes
    */
+  middleware(middleware): void {
+    this.route.use(middleware);
+  }
+
   get(regex, middleware, callback: Function = null) :void { 
     this.registry.add('get', regex, middleware, callback);
   }

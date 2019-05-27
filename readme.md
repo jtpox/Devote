@@ -6,7 +6,7 @@ A Typescript version of [ChoirJS](https://github.com/jtpox/ChoirJS) but without 
   
 
 ```
-const Devote = require('devote').default;
+const { Devote } = require('devote');
 
 const app = new Devote();
 app.listen(8080, () => {
