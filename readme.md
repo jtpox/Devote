@@ -1,7 +1,7 @@
 
 # Devote
 
-A Typescript version of [ChoirJS](https://github.com/jtpox/ChoirJS) but without the route events.
+A Typescript version of [ChoirJS](https://github.com/jtpox/ChoirJS) but without the route events and better.
 
   
 

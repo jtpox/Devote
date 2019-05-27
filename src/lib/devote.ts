@@ -37,12 +37,14 @@ export default class Devote {
     res.header = new Header();
     Mixin(res, Response(res, this.template));
     const routeCheck = this.registry.check(req.url, req.method);
-    if (routeCheck.error) {
+    req.params = routeCheck.exec;
+    this.route.run(req, res, routeCheck);
+    /* if (routeCheck.error) {
       res.notFound('Route not found in registry');
     } else {
       req.params = routeCheck.exec;
       this.route.run(req, res, routeCheck);
-    }
+    } */
   }
 
   listen(port: number, callback): void {

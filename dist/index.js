@@ -4,9 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const body_1 = __importDefault(require("./tools/body"));
+const static_1 = __importDefault(require("./tools/static"));
 var devote_1 = require("./lib/devote");
 exports.Devote = devote_1.default;
 exports.Tools = {
     Body: body_1.default,
+    Static: static_1.default,
 };
 //# sourceMappingURL=index.js.map

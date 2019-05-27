@@ -36,13 +36,14 @@ class Devote {
         res.header = new header_1.default();
         merge_descriptors_1.default(res, response_1.default(res, this.template));
         const routeCheck = this.registry.check(req.url, req.method);
-        if (routeCheck.error) {
-            res.notFound('Route not found in registry');
-        }
-        else {
-            req.params = routeCheck.exec;
-            this.route.run(req, res, routeCheck);
-        }
+        req.params = routeCheck.exec;
+        this.route.run(req, res, routeCheck);
+        /* if (routeCheck.error) {
+          res.notFound('Route not found in registry');
+        } else {
+          req.params = routeCheck.exec;
+          this.route.run(req, res, routeCheck);
+        } */
     }
     listen(port, callback) {
         this.app.listen(port, callback);

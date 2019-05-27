@@ -20,18 +20,22 @@ class Route {
     }
     run(req, res, routeCheck) {
         let { middlewares } = this;
-        /*
-         * Merge middlewares with route.
-         */
-        if (Array.isArray(routeCheck.middleware)) {
-            middlewares = middlewares.concat(routeCheck.middleware);
+        if (!routeCheck.error) {
+            /*
+           * Merge middlewares with route.
+           */
+            if (Array.isArray(routeCheck.middleware)) {
+                middlewares = middlewares.concat(routeCheck.middleware);
+            }
+            else {
+                middlewares.push(routeCheck.middleware);
+            }
+            // Add route to middlewares.
+            middlewares.push(routeCheck.callback);
         }
-        else {
-            middlewares.push(routeCheck.middleware);
-        }
-        // Add route to middlewares.
-        middlewares.push(routeCheck.callback);
-        this.execute(middlewares, req, res, () => { });
+        this.execute(middlewares, req, res, () => {
+            res.notFound('Route not found in registry');
+        });
     }
 }
 exports.default = Route;

@@ -4,7 +4,7 @@
  */
 const allowedRequest = ['POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'];
 
-function getData(req) {
+function getData(req): Promise<string> {
   return new Promise((resolve, reject) => {
     let buffer = '';
     req.on('data', (data) => {
@@ -21,7 +21,7 @@ function getData(req) {
   });
 }
 
-export default (req, res, next) => {
+export default (req, res, next): void => {
   req.body = null;
   if (
     req.headers['content-type'] === 'application/x-www-form-urlencoded'
