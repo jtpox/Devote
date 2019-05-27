@@ -5,7 +5,7 @@ class Header {
         this.statusCode = 200;
         this.headers = {
             'Content-Type': 'text/html',
-            'X-Powered-By': 'Dexterity',
+            'X-Powered-By': 'Devote',
         };
     }
     setStatus(code) {

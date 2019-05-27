@@ -2,7 +2,7 @@ export default class Header {
     statusCode: number = 200;
     headers: Object = {
         'Content-Type': 'text/html',
-        'X-Powered-By': 'Dexterity',
+        'X-Powered-By': 'Devote',
     };
 
     setStatus(code: number): void {
