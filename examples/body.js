@@ -7,9 +7,6 @@ app.listen(8080, () => {
 
 app.middleware(Tools.Body);
 
-/*
- * req.body will be unparsed.
- */
 app.post('/', (req, res) => {
   res.json({
     data: req.body,

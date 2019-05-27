@@ -17,3 +17,10 @@ app.middleware(Tools.Static('/dist/index.js')); // http://localhost:8080/dist/in
 app.get('/', (req, res) => {
     res.send('o7');
 });
+
+/*
+ * Set up 404 page for when resource can't be found.
+ */
+app.get(/(^.)/, (req, res) => {
+  res.notFound('Resource not found.');
+});

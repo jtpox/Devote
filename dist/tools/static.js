@@ -10,7 +10,6 @@ exports.default = (directory) => {
       * Check if the entry is a directory or not via regex.
       * ^(.*)\/$
       */
-    let name = null; // Name of the route;
     let regex = null;
     if (/^(.*)\/$/.test(directory)) {
         regex = new RegExp(`^(${directory})((?!.*\\.\\.))`);
@@ -28,7 +27,7 @@ exports.default = (directory) => {
             const file = req.url.replace('/', '');
             fs_1.default.readFile(file, (err, data) => {
                 if (err) {
-                    res.notFound();
+                    next();
                 }
                 else {
                     res.header.setHeader('Content-Type', mime_1.default.getType(file));

@@ -1,6 +1,8 @@
+import { parse } from 'querystring';
+
 /*
  * Handle POST body data.
- * Output is not parsed.
+ * Output is parsed by querystring.
  */
 const allowedRequest = ['POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'];
 
@@ -28,7 +30,7 @@ export default (req, res, next): void => {
     && allowedRequest.indexOf(req.method) !== -1
   ) {
     getData(req).then((buffer) => {
-      req.body = buffer;
+      req.body = parse(buffer);
       next();
     }).catch((err) => {
       // console.log(err);

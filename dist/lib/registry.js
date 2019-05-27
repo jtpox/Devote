@@ -4,7 +4,6 @@ class Registry {
     constructor() {
         /*
          * {
-           name,
            request,
            route,
            middleware,
@@ -15,10 +14,9 @@ class Registry {
     }
     /*
      * Adding route to the Registry.
-     * [0] name: string
-     * [1] regex: RegExp or string
-     * [2] middleware: Array or function (function only works for routing).
-     * [3] callback: function.
+     * [0] regex: RegExp or string
+     * [1] middleware: Array or function (function only works for routing).
+     * [2] callback: function.
      */
     add(method, regex, middleware = [], callback = null) {
         this.routes.push({
@@ -53,7 +51,6 @@ class Registry {
                     delete exec.input;
                     delete exec.groups;
                     returnCheck.error = false;
-                    returnCheck.route = this.routes[i].name;
                     returnCheck.middleware = this.routes[i].middleware;
                     returnCheck.callback = this.routes[i].callback;
                     returnCheck.exec = exec;
@@ -62,7 +59,6 @@ class Registry {
             }
             else if (this.routes[i].route === url && method.toLowerCase() === this.routes[i].method) {
                 returnCheck.error = false;
-                returnCheck.route = this.routes[i].name;
                 returnCheck.middleware = this.routes[i].middleware;
                 returnCheck.callback = this.routes[i].callback;
                 break;

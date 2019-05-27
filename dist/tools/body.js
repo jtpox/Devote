@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const querystring_1 = require("querystring");
 /*
  * Handle POST body data.
- * Output is not parsed.
+ * Output is parsed by querystring.
  */
 const allowedRequest = ['POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'];
 function getData(req) {
@@ -24,7 +25,7 @@ exports.default = (req, res, next) => {
     if (req.headers['content-type'] === 'application/x-www-form-urlencoded'
         && allowedRequest.indexOf(req.method) !== -1) {
         getData(req).then((buffer) => {
-            req.body = buffer;
+            req.body = querystring_1.parse(buffer);
             next();
         }).catch((err) => {
             // console.log(err);
