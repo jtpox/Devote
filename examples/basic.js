@@ -1,5 +1,4 @@
-// var { Devote } = require('devote');
-var { Devote } = require('../dist');
+var { Devote } = require('devote');
 
 var app = new Devote();
 app.listen(8080, () => {
