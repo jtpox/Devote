@@ -1,16 +1,9 @@
 "use strict";
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const http = __importStar(require("http"));
+const http_1 = __importDefault(require("http"));
 const merge_descriptors_1 = __importDefault(require("merge-descriptors"));
 const registry_1 = __importDefault(require("./registry"));
 const route_1 = __importDefault(require("./route"));
@@ -18,14 +11,16 @@ const header_1 = __importDefault(require("./header"));
 const response_1 = __importDefault(require("./response"));
 class Devote {
     constructor() {
+        this.registry = new registry_1.default();
+        this.route = new route_1.default();
         this.template = {
             name: null,
             directory: null,
             callback: null,
         };
-        this.app = http.createServer(this.server.bind(this));
-        this.registry = new registry_1.default();
-        this.route = new route_1.default();
+        this.app = http_1.default.createServer(this.server.bind(this));
+        // this.registry = new Registry();
+        // this.route = new Route();
     }
     engine(name, directory, callback) {
         this.template.name = name;

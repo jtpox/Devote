@@ -1,9 +1,6 @@
 export default class Route {
   middlewares = [];
 
-  constructor() {
-  }
-
   use(middleware): void {
     if (Array.isArray(middleware)) {
       this.middlewares = this.middlewares.concat(middleware);

@@ -1,4 +1,5 @@
-var { Devote } = require('devote');
+// var { Devote } = require('devote');
+var { Devote } = require('../dist');
 
 var app = new Devote();
 app.listen(8080, () => {
@@ -7,6 +8,16 @@ app.listen(8080, () => {
 
 app.get('/', (req, res) => {
   res.send('o7');
+});
+
+/*
+ * Regex example.
+ * /user/[0-9]*
+ */
+app.get(/^\/user\/([0-9]*)$/, (req, res) => {
+  res.json({
+    params: req.params,
+  })
 });
 
 app.post('/', (req, res) => {

@@ -10,10 +10,6 @@ export default class Registry {
    */
   routes = [];
 
-  constructor() {
-
-  }
-
   /*
    * Adding route to the Registry.
    * [0] name: string

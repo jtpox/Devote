@@ -1,4 +1,4 @@
-import * as http from 'http';
+import http from 'http';
 
 import Mixin from 'merge-descriptors';
 
@@ -12,8 +12,8 @@ import Response from './response';
 
 export default class Devote {
   app: http.Server;
-  registry: Registry;
-  route: Route;
+  registry: Registry = new Registry();
+  route: Route = new Route();
   template = {
     name: null,
     directory: null,
@@ -23,8 +23,8 @@ export default class Devote {
   constructor() {
     this.app = http.createServer(this.server.bind(this));
 
-    this.registry = new Registry();
-    this.route = new Route();
+    // this.registry = new Registry();
+    // this.route = new Route();
   }
 
   engine(name: string, directory: string, callback: Function): void {
