@@ -1,6 +1,6 @@
 {
   "name": "devote",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A Typescript version of ChoirJS but without the route events..",
   "main": "dist/index.js",
   "scripts": {

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (res, template) => {
+exports.default = (res, engine) => {
     const response = {
         head: () => {
             res.writeHead(res.header.statusCode, res.header.headers);
@@ -9,7 +9,7 @@ exports.default = (res, template) => {
          * Render from template.
          */
         render: (template, options) => {
-            template.callback(`${template.directory}/${template}.${template.name}`, options, (err, render) => {
+            engine.callback(`${engine.directory}/${template}.${engine.name}`, options, (err, render) => {
                 if (err) {
                     res.notFound('Template file not found.');
                 }

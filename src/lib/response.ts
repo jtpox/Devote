@@ -1,4 +1,4 @@
-export default (res, template) => {
+export default (res, engine) => {
     const response = {
       head: (): void => {
         res.writeHead(res.header.statusCode, res.header.headers);
@@ -7,8 +7,8 @@ export default (res, template) => {
        * Render from template.
        */
       render: (template, options) => {
-        template.callback(
-          `${template.directory}/${template}.${template.name}`,
+        engine.callback(
+          `${engine.directory}/${template}.${engine.name}`,
           options,
           (err, render) => {
             if (err) {
