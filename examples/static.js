@@ -1,4 +1,4 @@
-var { Devote, Tools } = require('../dist/index');
+var { Devote, Tools } = require('devote');
 
 var app = new Devote();
 app.listen(8080, () => {
