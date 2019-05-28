@@ -27,6 +27,6 @@ app.post('/', (req, res) => {
  * 404 error page.
  * This has to be the final route in order to make the 404 page work.
  */
-app.get(/(^.)/, (req, res) => {
+app.get(/(.*)/, (req, res) => {
   res.notFound('Route is not found.');
 });

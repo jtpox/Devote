@@ -21,6 +21,6 @@ app.get('/', (req, res) => {
 /*
  * Set up 404 page for when resource can't be found.
  */
-app.get(/(^.)/, (req, res) => {
+app.get(/(.*)/, (req, res) => {
   res.notFound('Resource not found.');
 });

@@ -1,5 +1,3 @@
-import Devote from './lib/devote';
-
 import Body from './tools/body';
 import Static from './tools/static';
 
