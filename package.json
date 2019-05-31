@@ -1,6 +1,6 @@
 {
   "name": "devote",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "A Typescript version of ChoirJS but without the route events and better.",
   "main": "dist/index.js",
   "scripts": {
@@ -31,6 +31,7 @@
     "@types/node": "^12.0.2",
     "merge-descriptors": "^1.0.1",
     "mime": "^2.4.3",
+    "path-to-regexp": "^3.0.0",
     "querystring": "^0.2.0"
   }
 }

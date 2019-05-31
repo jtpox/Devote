@@ -16,11 +16,19 @@ app.get('/', (req, res) => {
 app.get(/^\/user\/([0-9]*)$/, (req, res) => {
   res.json({
     params: req.params,
-  })
+  });
 });
 
 app.post('/', (req, res) => {
   res.send('Post received.');
+});
+
+/*
+ * Using path-to-regexp
+ * More info: https://www.npmjs.com/package/path-to-regexp
+ */
+app.get('/profile/:id', (req, res) => {
+  res.json(req.params);
 });
 
 /* 

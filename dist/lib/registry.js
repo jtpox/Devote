@@ -1,5 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const path_to_regexp_1 = __importDefault(require("path-to-regexp"));
 class Registry {
     constructor() {
         /*
@@ -62,6 +66,35 @@ class Registry {
                 returnCheck.middleware = this.routes[i].middleware;
                 returnCheck.callback = this.routes[i].callback;
                 break;
+            }
+            else {
+                /*
+                 * Use path-to-regexp
+                 * More info: https://www.npmjs.com/package/path-to-regexp
+                 */
+                const keys = [];
+                const regexp = path_to_regexp_1.default(this.routes[i].route, keys);
+                if (regexp.test(url) && method.toLowerCase() === this.routes[i].method) {
+                    const exec = regexp.exec(url);
+                    /*
+                     * Remove unnecessary parameters.
+                     */
+                    exec.splice(0, 1);
+                    delete exec.index;
+                    delete exec.input;
+                    delete exec.groups;
+                    returnCheck.error = false;
+                    returnCheck.middleware = this.routes[i].middleware;
+                    returnCheck.exec = {};
+                    /*
+                     * Merge keys with value taken from exec.
+                     */
+                    returnCheck.callback = this.routes[i].callback;
+                    for (let ei = 0; ei < keys.length; ei += 1) {
+                        returnCheck.exec[keys[ei].name] = exec[ei];
+                    }
+                    break;
+                }
             }
         }
         return returnCheck;
